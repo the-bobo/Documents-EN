@@ -1,8 +1,8 @@
-## 获取用户信息
+## Retrieve user information
 
 `GET /v1/auth/(namespace)/profile/`
 
-**返回示例** :
+**Sample response** :
 ```json
 {
   "id": 5,
@@ -34,28 +34,12 @@
 ```
 
 
-参数:
-- **namespace** 用户名或机构名
-- **currency** 当前账户使用的币种
-- **invitation** 邀请码
-- **is_available** 账户是否有效
-- **password_is_temp** 是否是临时密码
-- **is_active** 账户是否已激活
-- **user_level** 用户级别（normal表示普通用户，vip表示VIP用户）
-- **feature_flags** 用户使用灵雀云的功能标志位
-- **app_created** 最后一次操作服务的时间
-- **repo_created** 最后一次操作镜像的时间
-- **api_revoked** 最后一次使用API的时间
-- **type** 用户类型
-
-
-
-## 生成 API Token
+## Generate API token
 
 `POST /v1/generate-api-token/`
 
 
-**请求示例** :
+**Sample request** :
 ```json
 {
     "username": "madams",
@@ -63,7 +47,7 @@
 }
 ```
 
-**返回示例** :
+**Sample response** :
 ```json
 {
     "token": "4dfff64b6d2994a9567ac363149fb8692273e6b2"
