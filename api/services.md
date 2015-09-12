@@ -1,7 +1,7 @@
-## 创建服务
+## Create a service
 `POST /v1/services/(namespace)`
 
-**请求示例**:
+**Sample request**:
 ```json
 {
     "service_name": "test",
@@ -60,31 +60,31 @@
 }
 ```
 
-参数:
+Parameters:
 
-* **service_name**: - 服务名称，在每个用户创建的服务中必须唯一。后面某些API中的app_name和这个是一个含义。
-* **namespace**: 服务所属用户名或机构名
-* **run_command**: 运行docker时执行的命令
-* **image_name** 服务使用的镜像
-* **image_tag** 服务使用的镜像版本
-* **instance_size**: 容器实例大小，可选项为：“XS”，“S”，“M”，“L”，“XL”
-* **scaling_mode**: 调节模式，只对无状态服务有效。可选项为：“MANUAL”，“AUTO”
-* **target_state**: 服务创建后的目标状态，可选项为：“STARTED”，“STOPPED”
-* **custom_domain_name**: 用户自定义的域名，目前能设置一个域名，如“www.myname.com”
-* **linked_to_apps** 该服务要连接的其它服务
-* **target_num_instances**: 服务的实例数量
-* **instance_envvars**: 环境变量
-* **instance_ports**: 端口设置
-* **autoscaling_config**: 当选择自动调节模式时的参数配置
-* **volumes**: 存储卷
+* **service_name**: - Name of the service
+* **namespace**: Username or organization name
+* **run_command**: Command to execute when starting the Docker container
+* **image_name** Container image name for the service
+* **image_tag** Container image tag for the service
+* **instance_size**: Container size. Valid choices: "XS", "S", "M", "L", "XL"
+* **scaling_mode**: Scaling mode, only applicable to stateless services. Valid choices: "MANUAL", "AUTO"
+* **target_state**: Target state of the service after creation. Valid choices: "STARTED", "STOPPED"
+* **custom_domain_name**: Custom domain name for the serivce. E.g. "www.myname.com"
+* **linked_to_apps**: Links to containers in other services
+* **target_num_instances**: Target number of container instances for the service
+* **instance_envvars**: Environment variables for the service
+* **instance_ports**: Port information for the service
+* **autoscaling_config**: Auto-scaling configuration, applicable when the scaling mode is set to AUTO
+* **volumes**: Storage volumes
 
 
-## 服务列表
+## List services
 `GET /v1/services/(namespace)`
 
 
 
-**返回示例**:
+**Sample response**:
 ```json
 {
     "count": 2,
@@ -186,31 +186,26 @@
 }
 ```
 
-参数:
+Parameters:
 
-* **count** 用户已经创建的服务个数
-* **previous**
-* **unique_name**: - 服务的唯一标示符。遵从如下的正则表达式规则:
-
-    `^(([a-z0-9]|[a-z0-9][a-z0-9\-][a-z0-9])\.)([a-z0-9]|[a-z0-9][a-z0-9\-]*[a-z0-9])$`
-
-* **updated_at** 最后更新时间
-* **allocation_group** 专属VM标记
-* **started_at** 启动时间
-* **stopped_at** 停止时间
-* **is_deploying** 是否正在部署中
-* **namespace** 服务所属用户名或机构名
-* **created_by** 创建者
+* **count**: Number of services belonging to the user
+* **unique_name**: Unique name assigned to the service
+* **updated_at**: Last updated time
+* **started_at**: Last started time
+* **stopped_at**: Last stopped time
+* **is_deploying**: Whether a deployment is in progress for the service
+* **namespace**: Username or organization
+* **created_by**: User that created the service
 
 
 
 
-## 获取服务信息
+## Retrieve service details
 
 `GET /v1/services/(namespace)/(service_name)/`
 
 
-**返回示例**:
+**Sample response**:
 ```json
 {
     "unique_name": "1cd688e2-b4eb-4bf8-9113-5caccdec2db6",
@@ -256,12 +251,10 @@
 ```
 
 
-## 更新服务
+## Update a service
 `PUT /v1/services/(namespace)/(service-name)/`
 
-更新某个服务的参数，比如调整其实例个数
-
-**请求示例**:
+**Sample request**:
 ```json
 {
     "service_name": "test",
@@ -271,24 +264,24 @@
 }
 ```
 
-## 启动服务
+## Start a service
 `PUT /v1/services/(namespace)/(service-name)/start/`
 
-## 停止服务
+## Stop a service
 `PUT /v1/services/(namespace)/(service-name)/stop/`
 
-## 删除服务
+## Delete a service
 `DELETE /v1/services/(namespace)/(service-name)/`
 
-## 获取服务日志
+## Retrieve logs of a service
 `GET /v1/services/(namespace)/(service-name)/logs/`
 
-**请求示例**:
+**Sample request**:
 
 `/v1/services/madams/test/logs?start_time=1433753210&end_time=1433753270`
 
 
-**返回示例**:
+**Sample response**:
 
 ```json
 [
@@ -305,9 +298,9 @@
 ]
 ```
 
-参数:
-- **start_time** **end_time** 时间戳
-- **instance_id** 产生日志的容器实例id
-- **message** 日志内容
-- **time** 日志创建的时间
+Parameters:
+- **start_time** **end_time**: Retrieve logs within a specific time period
+- **instance_id**: ID of the container instance to retrieve logs for
+- **message**: Log content
+- **time**: Log creation time
 
