@@ -51,7 +51,8 @@
 ```
 
 
-## Retrieve service instance metrics:
+## Retrieve service instance metrics
+
 `GET /v1/services/(namespace)/(service-name)/instances/(instance-uuid)/metrics`
 
 **Sample request**:

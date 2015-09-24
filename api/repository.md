@@ -1,27 +1,27 @@
-## 创建镜像仓库
+## Create an image repo
 
 `POST /v1/repositories/(namespace)/`
 
-**请求示例**:
+**Sample request**:
 ```json
 {
     "repo_name": "repo",
-    "description": "A repo docker image repository",
+    "description": "A docker image repository",
     "namespace": "madams",
     "is_public": true
 }
 ```
 
-参数:
-- **repo_name** 镜像仓库名称
-- **namespace** 镜像仓库所属的用户名或机构名
-- **is_public** 镜像仓库是否为公共的
-- **description** 镜像仓库描述
+Parameters:
+- **repo_name** Image repo name
+- **namespace** Username or organization that the image repo belongs to
+- **is_public** True if the image repo is public
+- **description** Image repo description
 
 
 
 
-**返回示例**:
+**Sample response**:
 ```json
 {
     "repo_name": "repo",
@@ -36,20 +36,17 @@
 }
 ```
 
-参数:
+Parameters:
 
-- **is_automated** 是否镜像构建仓库
+- **is_automated** True if builds can be automatically triggered from a linked source code repository
 
 
 
-## 镜像仓库列表:
+## List image repos
 
 `GET /v1/repositories/(namespace)/`
 
-
-列出某个用户的所有镜像仓库
-
-**返回示例**:
+**Sample response**:
 ```json
 {
     "count":  3,
@@ -94,12 +91,12 @@
 }
 ```
 
-## 更新镜像仓库:
+## Update an image repo
 
 `PUT /v1/repositories/(namespace)/(repo-name)`
 
 
-**返回示例**:
+**Sample response**:
 ```json
 {
     "repo_name": "repo",
@@ -111,13 +108,11 @@
 }
 ```
 
-## 镜像仓库信息
+## Retrieve image repo details
 
 `GET /v1/repositories/(namespace)/(repo-name)`
 
-获取某个镜像仓库的详细信息
-
-**返回示例**:
+**Sample response**:
 ```json
 {
     "namespace": "madams",
@@ -140,13 +135,11 @@
 }
 ```
 
-## Tags列表
+## List image tags
 
 `GET /v1/repositories/(namespace)/(repo-name)/tags`
 
-获取某个镜像仓库的`Tags`列表
-
-**返回示例**:
+**Sample response**:
 ```json
 [
     {
@@ -161,7 +154,7 @@
 ```
 
 
-## 删除镜像源
+## Delete an image repo
 
 `DELETE /v1/repositories/(namespace)/(repo-name)/`
 
