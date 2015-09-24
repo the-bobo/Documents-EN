@@ -1,4 +1,4 @@
-##创建Web钩子
+##Create a webhook
 
 `POST /v1/hooks`
 
@@ -13,21 +13,21 @@
 }
 ```
 
-**参数说明**
+**Parameters**
 
-- **subject_type**：可以选build_repo（镜像构建仓库）、image_repo（镜像仓库）
+- **subject_type**: Valid choices: "build_repo", "image_repo"
 
-- **subject**：镜像（构建）仓库的短路经（由命名空间和仓库名组成）
+- **subject**: Path of image/build repo, in the form of <namespace>/<repo_name>
 
-- **events**：事件集合
+- **events**: Event triggers
 
-- **secret**：密钥，用作计算数字签名
+- **secret**: Secret key used for digital signatures
 
-- **url**：Web钩子的回调URL
+- **url**: Callback URL of the webhook
 
-- **name**：Web钩子的名称
+- **name**: Webhook name
 
-**返回结果示例（status code：201）**
+**Sample response (status code: 201)**
 
 ```json
 {
@@ -47,11 +47,11 @@
 }
 ```
 
-##获得钩子列表
+##List webhooks
 
 `GET /v1/hooks?subject_type=<subject_type>&subject=<subject>`
 
-**返回结果示例（status code：200）**
+**Sample response (status code: 200)**
 
 ```json
 [
@@ -77,11 +77,11 @@
 ]
 ```
 
-##获得钩子详情
+##Retrieve webhook details
 
 `GET /v1/hooks/<hook_id>`
 
-** 返回结果示例（status code：200）**
+** Sample response (status code: 200)**
 
 ```json
 {
@@ -101,7 +101,7 @@
 }
 ```
 
-##更新Web钩子
+##Update a webhook
 
 `PUT /v1/hooks/<hook_id>`
 
@@ -115,7 +115,7 @@
 }
 ```
 
-**返回结果示例（status code：200）**
+**Sample response (status code: 200)**
 
 ```json
 {
@@ -136,9 +136,9 @@
 }
 ```
 
-##删除Web钩子
+##Delete a webhook
 
 `DELETE /v1/hooks/<hook_id>`
 
-**返回结果示例（status code：204）**
+**Sample response (status code: 204)**
 
