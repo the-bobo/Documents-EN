@@ -1,9 +1,7 @@
-## 实例列表
+## List service instances
 `GET /v1/services/(namespace)/(service-name)/instances`
 
-获取某个服务的实例列表
-
-**返回示例**:
+**Sample response**:
 ```json
 [
     {
@@ -19,13 +17,11 @@
 ]
 ```
 
-## 实例信息
+## Retrieve service instance details
 
 `GET /v1/services/(namespace)/(service-name)/instances/(instance-uuid)/`
 
-获取某个实例的详细信息
-
-**返回示例**:
+**Sample response**:
 ```json
 {
     "instance_name": "test.1",
@@ -34,17 +30,15 @@
 }
 ```
 
-## 实例日志
+## Retrieve service instance logs
 
 `GET /v1/services/(namespace)/(service-name)/instances/(instance-uuid)/logs`
 
-获取某个实例的日志信息
-
-**请求示例**:
+**Sample request**:
 
 `/v1/services/madams/test/instances/1cd688e2-b4eb-4bf8-9113-5caccdec2db6/logs?start_time=1433753210&end_time=1433753270`
 
-**返回示例**:
+**Sample response**:
 ```json
 [
     {
@@ -57,21 +51,19 @@
 ```
 
 
-## 实例运行时信息:
+## Retrieve service instance metrics:
 `GET /v1/services/(namespace)/(service-name)/instances/(instance-uuid)/metrics`
 
-获取某个实例的运行时信息
-
-**请求示例**:
+**Sample request**:
 
 `/v1/services/madams/test/instances/a9afcb38-0db5-11e5-a6be-02416b28d26a/metircs?start_time=1433753087&end_time=1433753090&point_per_period=1m`
 
-参数:
+Parameters:
 
-* **point_per_period** -  可以为 “1s”, “1m”, “5m”, “15m”, “30m”, “1h”, “4h”, “12h”, “1d”, “7d”, “30d”.
+* **point_per_period** -  Examples: “1s”, “1m”, “5m”, “15m”, “30m”, “1h”, “4h”, “12h”, “1d”, “7d”, “30d”.
 
 
-**返回示例**:
+**Sample response**:
 ```json
 {
     "name": "stats.0f598d55_8bf0_4c7b_9388_5457a1ec0228.a9afcb38_0db5_11e5_a6be_02416b28d26a",
@@ -129,7 +121,7 @@
 ```
 
 
-参数:
+Parameters:
 
-- **columns** 返回的每一个point所的对应的值的含义
-- **points** 数据集合
+- **columns** Meaning of each data point returned
+- **points** Data point sets
