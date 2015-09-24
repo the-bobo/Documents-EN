@@ -1,8 +1,8 @@
-### 创建备份
+### Create a volume backup
 
 `POST /v1/backups/(namespace)`
 
-**请求示例**:
+**Sample request**:
 ```json
 {
     "app_id" : "24fc2fcc-d86a-4566-8476-bf5f264fa62b",
@@ -13,7 +13,7 @@
 
 
 
-**返回示例**:
+**Sample response**:
 ```json
 {
     "namespace": "madams"
@@ -25,13 +25,11 @@
 ```
 
 
-## 备份列表
+## List volume backups
 
 `GET /v1/backups/(namespace)`
 
-列出某个用户的所有备份信息
-
-**返回示例**:
+**Sample response**:
 ```json
 [
     {
@@ -50,13 +48,11 @@
 ]
 ```
 
-## 备份信息
+## Retrieve volume backup details
 
 `GET /v1/backups/(namespace)/(backup_id)`
 
-获取某个备份的详细信息
-
-**返回示例**:
+**Sample response**:
 ```json
 {
     "backup_id" : "8b1103a6-9023-421e-9289-70c3f9a0699f",
