@@ -35,7 +35,7 @@
    * [镜像加速器](feature/accelerator.md)
    * [Web钩子](feature/webhook.md)
    * [用户设置](feature/users.md)
-* [API References](api/introduce.md)
+* [API References](api/introduction.md)
    * [Users](api/users.md)
    * [Services](api/services.md)
    * [Instances](api/instances.md)
