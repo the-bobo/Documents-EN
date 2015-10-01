@@ -1,18 +1,18 @@
 ## Alauda Command Line
 
-## 源码
-开源地址:
+## Source code
+Alauda CLI is open sourced at:
 
 `https://github.com/alaudacloud/alauda-CLI.git`
 
 
-## 安装
+## Installation
 
 `pip install alauda`
 
 
-## 使用
-`alauda` 或 `alauda -h`:
+## Usage
+`alauda` or `alauda -h`:
 
 ```
 bash-3.2# alauda
@@ -35,29 +35,29 @@ Alauda CLI commands:
 ```
 
 
-使用 `-v` 来查看当前 alauda CLI的版本:
+Use `-v` to check the version of the installed Alauda CLI:
 
 ```
 bash-3.2# alauda -v
 alauda 0.1.0
 ```
 
-在后面所有的参数说明中:
+Understanding the parameters:
 
-* `-e[]` 表示可以志明多次
-  比如`-e DB_NAME=mysql -e DB_PASSOWRD=123`
-* `-d=""` 表示值是字符串
-  例如`-d "www.myself-domain.com"`
-* `-s=[XS,S,M,L,XL]` 表示必须是给定的值之一
-  例如: `-s XL`
-* `-t=1` 表示所给定的值必须为数字
-  例如: `-t 1`
-* `-a=false` 表示不显示输出此参数的情况下，参数的值为false即无效状态，如果显示的列出该参数 `-a`，则表明该参数的值为true，即有效状态。
+* `-e[]` indicates that the option can be repeated multiple times
+  E.g. `-e DB_NAME=mysql -e DB_PASSOWRD=123`
+* `-d=""` indicates that the value is a string
+  E.g. `-d "www.myself-domain.com"`
+* `-s=[XS,S,M,L,XL]` indicates that the value must be selected from the set
+  E.g. : `-s XL`
+* `-t=1` indicates that the value is numeric
+  E.g. : `-t 1`
+* `-a=false` indicates a binary switch that defaults to `false`
 
 
 
-## 帮助
-显示任何支持命令的帮助信息，只需要在命令后面增加参数`-h`
+## Help
+To get help for any command or subcommand, append the `-h` option:
 
 
 ```

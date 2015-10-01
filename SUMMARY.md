@@ -42,7 +42,7 @@
    * [Repositories](api/repository.md)
    * [Webhooks](api/webhook.md)
    * [Volume backups](api/backup.md)
-* [CLI References](cli/introduce.md)
+* [CLI References](cli/introduction.md)
    * [Login](cli/login.md)
    * [Services](cli/service.md)
    * [Instances](cli/instances.md)
