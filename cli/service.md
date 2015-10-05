@@ -1,4 +1,4 @@
-## 服务
+## Services
 
 
 ```
@@ -31,7 +31,7 @@ Alauda service commands:
 ```
 
 
-示例:
+Example:
 
 ```
 bash-3.2# alauda run hello index.alauda.cn/alauda/hello-world:latest -p 80
@@ -43,8 +43,7 @@ bash-3.2# alauda run hello index.alauda.cn/alauda/hello-world:latest -p 80
 
 
 ### create
-用于创建一个服务(只创建，不运行)。并通过参数指明服务的名称，所用镜像名称，以及服
-务所需容器大小，容器数量等信息。
+Create a new service (without starting it).
 
 ```
 usage: alauda service create [-h] [-t TARGET_NUM_INSTANCES] [-s {XS,S,M,L,XL}]
@@ -76,17 +75,16 @@ optional arguments:
 ```
 
 
-参数:
+Parameters:
 
-- 如果显示的指明了`-a` 参数，则表明将服务设置为自动调节模式，此模式下需要使用`-f` 来指明自动调节参数配置文件所在路径。
+- If `-a` is used to enable auto-scaling, then either use `-f` to specify the auto-scaling config file, or a default config file `auto-scaling.cfg` must exist in the current directory.
 
 
 
 
 ### run
 
-用于创建并运行一个服务。并通过参数指明服务的名称，所用镜像名称，以及服务所需容器
-大小，容器数量等信息。
+Create and start a new service.
 
 
 ```
@@ -121,7 +119,7 @@ optional arguments:
 
 
 ### inspect
-获取一个服务的详细信息。
+Inspect the details of a service.
 
 
 ```
@@ -144,7 +142,7 @@ optional arguments:
 
 ### start
 
-启动处于暂停状态的服务。
+Start a service.
 
 
 ```
@@ -163,7 +161,7 @@ optional arguments:
 
 
 ### stop
-暂停处于运行状态的服务。
+Stop a service.
 
 ```
 usage: alauda service stop [-h] [-n NAMESPACE] name
@@ -180,7 +178,7 @@ optional arguments:
 
 
 ### rm
-删除已存在的服务。
+Deletes a service.
 
 
 ```
@@ -199,7 +197,7 @@ optional arguments:
 
 
 ### ps
-列出当前账户下所有的服务。
+List all services for the current user (under an optional namespace).
 
 
 ```
@@ -215,7 +213,7 @@ optional arguments:
 
 ### scale
 
-调节当前服务中实例数量。
+Scale the number of instances of the service.
 
 
 
@@ -236,7 +234,7 @@ optional arguments:
 
 ### enable-autoscaling
 
-将当前服务的状态设置为自动调节模式。
+Enable auto-scaling for the service.
 
 ```
 usage: alauda service enable-autoscaling [-h] [-n NAMESPACE]
@@ -254,12 +252,11 @@ optional arguments:
   -f, --autoscaling-config=""       Auto-scaling config file name
 ```
 
-
-必须显示指明自动调节配置文件所在位置，如果不指明，则默认当前路径下的`auto-scaling.cfg`文件为配置文件。
+Use `-f` to specify the auto-scaling config file. The config file defaults to `auto-scaling.cfg` in the current directory.
 
 ### disable-autoscaling
 
-将当前服务的状态设置为手动调节模式。
+Disable auto-scaling
 
 
 ```
@@ -278,12 +275,12 @@ optional arguments:
   -t, --target-num-instances=1  Target number of instances for the service
 ```
 
-设置为手动模式的同时，可以使用`-t`指定服务的实例数量，如果不指定，则以自动调节模式的最后实例数量为当前服务的实例数量。
+Use `-t` to specify the number of instances. If it is not specified, the current number of instances will be used.
 
 
 ### logs
 
-查看当前服务的日志信息
+Query service logs.
 
 
 ```
@@ -302,8 +299,7 @@ optional arguments:
   -e, --end-time=""             Logs query end time. e.g. 2015-05-01 12:12:12
 ```
 
-
-如果不指定起始和终止时间，那么返回最近一小时以内的日志。如果只指定起始时间，那么返回指定的起始时间到当前时间的日志，如果只指定终止时间，那么返回终止时间之前一小时以内的日志。
+If neither `start-time` nor `end-time` is specified, the command returns the most recent one hour worth of log data. If only `start-time` is specified, the command returns all log entries since the `start-time`. If only `end-time` is specified, the command returns one hour worth of log data before the `end-time`.
 
 
 
