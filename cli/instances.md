@@ -1,9 +1,9 @@
-## 实例
+## Instances
 
 
 ### instance
 
-查看某一个实例的详细信息。
+Inspect details of a service instance
 
 
 ```
@@ -26,7 +26,7 @@ optional arguments:
 
 ### instance-logs
 
-查看某一实例的日志信息。
+Query logs of a service instance
 
 
 
