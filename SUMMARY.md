@@ -16,5 +16,5 @@
    * [Volume backups](cli/backup.md)
    * [Organizations](cli/organization.md)
    * [Command-line completion](cli/command-completion.md)
-   * [Toubleshooting](cli/errors.md)
+   * [Toubleshooting](cli/toubleshooting.md)
 
