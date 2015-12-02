@@ -1,4 +1,4 @@
-## compose
+## Compose
 
 ```
 usage: alauda compose [-h] {up,ps,start,stop,restart,rm,scale} ...
@@ -20,9 +20,9 @@ Alauda compose commands:
 ```
 
 
-用于一键部署应用。支持docker-compose的基本命令，并增加了alauda自身的特性。
+Alauda compose is used to define and manage a multi-container, multi-service application. It uses the familiar syntax of docker-compose with Alauda-specific capabilities added.
 
-示例:
+Example:
 
 ```
 bash-3.2# alauda compose up -f gitlab.alauda.yml
@@ -34,9 +34,9 @@ bash-3.2# alauda compose up -f gitlab.alauda.yml
 
 
 
-注意:
+Note:
 
-* volumes的格式修改为path:size path即挂载路径，size为挂载卷大小单位为G。如果不指定size，则默认挂载卷大小为10G。例如:
+* Syntax for `volumes` is `path:size`, where `size` is the size of the persistent data volume, in gygabytes. The default volume size is 10G. E.g.:
 
 ```yaml
 volumes:
@@ -45,64 +45,63 @@ volumes:
 ```
 
 
-* ports格式不再支持`port1:port2`，而如下所示:
+* Only the container ports can be specified in `ports`. E.g.:
 
 ```yaml
 ports:
 - "80"
 - "22"
-或者
+or
 ports:
 - "80/http"
 - "22/tcp"
 ```
 
-并且ports所映射出的端口是都external性质的。
+Ports published with `ports` are `external`, that is, they are accessible from outside of the application.
 
 
-* expose
-
-expose所暴露出的端口是`internal`性质的。
-
-格式参照参数ports
-
-关于`external`和`internal`的详细说明参照在线文档:[http://docs.alauda.cn/?page_id=123](http://docs.alauda.cn/?page_id=123)
+* `expose` has the same syntax as `ports`. These ports are `internal`, meaning they are only accessible to linked services.
 
 
+* Note that all ports need to be exposed or published with `expose` or `ports`, even if they are already specified in the Dockerfile.
 
-* 在当前的版本中，所有需要暴露的端口，不论external还是internal的都需要显示的在yaml文件中声明，仅仅在Dockerfile中使用EXPOSE命令来声明端口是无效的。
 
-
-* environment。 支持环境变量的替换。即，某一环境变量可以由当前服务的其他环境变量赋值或者拼接得到。例如:
+* The value of an environment variable specified in `environment` supports one level of environment substitution. E.g.:
 
 ```yaml
 DB_HOST: $POSTGRESQL_PORT_5432_TCP_ADDR
-DB_HOST的值就是当前服务中的环境变量POSTGRESQL_PORT_5432_TCP_ADDR所指的值。
+The value of DB_HOST is set as the value of $POSTGRESQL_PORT_5432_TCP_ADDR in the current environment.
 
 ```
 
+* Use `size` to specify the size of the container. Valid options are {'XS', 'S', 'M', 'L', 'XL'}. E.g.:
 
-* 新增size。用于指定服务所需的硬件资源大小。可选范围为{‘XS’, ‘S’, ‘M’, ‘L’,
-‘XL’} 例如:
+```yaml
+size: L
+```
 
-`size: L`
+* Use `domain` to specify a custom domain. E.g.:
 
-* 新增domain。 用于用户指定自己的域名。例如:
+```yaml
+domain: "www.myself.com"
+```
 
-`domain: "www.myself.com"`
+* Use `autoscaling_config` to specify the configuration file for auto-scaling. E.g.:
 
-* 新增autoscaling_config。用于指定服务的自动调节模式，以及自动调节模式的配置文件。
-例如:
+```yaml
+autoscaling_config: ./autoscaling.cfg
+```
 
-`autoscaling_config: ./autoscaling.cfg`
+* Use `number` to specify the number of instances for a service container. E.g.:
 
-* 新增number。用户指定某个服务所开启的实例数量。例如:
-`size: 5`
+```yaml
+size: 5
+```
 
 
 ### up
 
-启动包含多个服务的应用。
+Deploy a multi-service, multi-container application.
 
 ```
 usage: alauda compose up [-h] [-f FILE] [-s]
@@ -115,12 +114,11 @@ optional arguments:
   -s, --strict=false    Wait for linked services to start
 ```
 
-
-当显示的输入-s 参数时，表示服务需要等到其所link的服务启动之后，才开始启动。
+When `-s` is used, dependent services will wait for linked services to enter running state before they start.
 
 
 ### ps
-列出应用的各个服务信息。
+List all services under the current application (as defined by the yaml file).
 
 ```
 usage: alauda compose ps [-h] [-f FILE]
@@ -135,7 +133,7 @@ optional arguments:
 
 ### start
 
-启动已经停止的应用。
+Start a service.
 
 ```
 usage: alauda compose start [-h] [-f FILE] [-s]
@@ -149,12 +147,11 @@ optional arguments:
 ```
 
 
-`-s` 同 `up`命令
 
 
 ### stop
 
-暂停运行中的应用。
+Stop a service.
 
 
 ```
@@ -170,7 +167,7 @@ optional arguments:
 
 ### restart
 
-重新启动应用。
+Restart a service.
 
 ```
 usage: alauda compose restart [-h] [-f FILE] [-s]
@@ -185,7 +182,7 @@ optional arguments:
 
 
 ### rm
-删除应用。
+Delete a service.
 
 ```
 sage: alauda compose rm [-h] [-f FILE]
@@ -200,7 +197,7 @@ optional arguments:
 
 ### scale
 
-调节应用中每个服务的实例数量。
+Scale the number of instances of a service.
 
 
 ```
@@ -217,7 +214,7 @@ optional arguments:
 ```
 
 
-示例:
+Example:
 
 `alauda compose scale web=2 redis=3`
 
