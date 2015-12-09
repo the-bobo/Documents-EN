@@ -18,24 +18,24 @@ Alauda organization commands:
 ```
 
 
-在当前账户下创建机构，并进行管理。这些机构和普通账户一样，可以进行服务的构建等操作。管理员可以增减机构中的用户数量，或者对机构中的某一用户的权限进行修改。有只读、可写、管理员权限等。
+Create an organization under the current account. Admins of the organization can add and remove users and manage their permissions. Permissions could be read-only, read-write, or admin.
 
-样例:
+Example:
 
 ```
 bash-3.2# alauda organization list
      Name           Company              Created time
 -----------------------------------------------------------
-mathildedev      云雀科技研发组        2015-04-25T05:42:00.828Z
-xdzhangcnorg     mathilde          2015-05-19T03:35:29.047Z
-xdzhangcnorg1    mathilde2         2015-05-25T07:38:07.670Z
+dev              Mathilde Tech     2015-04-25T05:42:00.828Z
+frontend-dev     Mathilde Tech     2015-05-19T03:35:29.047Z
+backend-dev      Mathilde Tech     2015-05-25T07:38:07.670Z
 
 ```
 
 
 
 ### create
-创建组织。
+Create a new organization
 
 ```
 usage: alauda organization create [-h] name company
@@ -53,12 +53,12 @@ optional arguments:
 
 ### list
 
-列出当前用户所属的所有组织。
+List all organizations this user belong to.
 
 
 ### inspect
 
-获取某个组织的详细信息。
+Get details of an organization
 
 
 ```
@@ -75,7 +75,7 @@ optional arguments:
 
 ### update
 
-更新某个组织的信息
+Update an organization
 
 
 
