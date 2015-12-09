@@ -17,10 +17,9 @@ Alauda backup commands:
 ```
 
 
-用于对服务的数据进行备份。这些数据必须是存储在卷中。
+Manage backups for the data volumes used by the services
 
-
-示例:
+Example:
 
 ```
 bash-3.2# alauda backup create backup1 redis /data
@@ -30,7 +29,7 @@ bash-3.2# alauda backup create backup1 redis /data
 
 ### create
 
-创建备份。
+Create a volume backup
 
 
 ```
@@ -49,12 +48,9 @@ optional arguments:
 ```
 
 
-参数dir 是服务在创建的时候所制定的volume挂载路径。
-
-
 ### list
 
-列出当前所有备份。
+List volume backups
 
 ```
 usage: alauda backup list [-h] [-n NAMESPACE]
@@ -69,7 +65,7 @@ optional arguments:
 
 ### inspect
 
-获取某个备份的详细信息。
+Get details of a volume backup
 
 
 ```
@@ -86,15 +82,11 @@ optional arguments:
 ```
 
 
-id 为用户创建每个备份之后所获取的唯一id。
-
-
-
 
 
 ### rm
 
-删除备份。
+Remove a volume backup
 
 ```
 usage: alauda backup rm [-h] [-n NAMESPACE] id
