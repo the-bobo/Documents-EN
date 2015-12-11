@@ -1,35 +1,28 @@
-## 命令补全
+## Command-line completion
+
+Press `tab` once to auto-complete a command. Press `tab` twice to list all the command options.
 
 
-支持命令补全和查找。例如在输入alauda之后，双击Tab键，即可看到alauda支持的命令。
-在键入alauda compse之后双击Tab键，就可以知道alauda compose 所支持的命令。 当输出
-alauda c之后，单机Tab键，即可得到补全后的命令alauda compose
+###  Instructions for Debian
 
-
-
-###  Debian
-
-只需要将源码包中的alauda文件拷贝到/etc/bash_completion.d，然后执行
-
+Copy the file 'alauda' to /etc/bash-completion.d, then execute:
 
 `. /etc/bash_completion.d/alauda`
 
 
-### OS X
+### Instructions for OSX
 
-首先需要安装 bash-completion
+Install bash-completion:
 
 ```
 $ brew install bash-completion
 $ brew tap homebrew/completions
 ```
 
-
-然后将源码包中的alauda文件拷贝到/usr/local/etc/bash_completion.d/,然后执行
+Copy the file 'alauda' to /etc/bash-completion.d, then execute:
 
 `. /usr/local/etc/bash_completion.d/alauda`
 
-即可.
 
 
 
